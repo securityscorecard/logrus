@@ -69,7 +69,7 @@ func (f *JSONFormatter) Format(entry *Entry) ([]byte, error) {
 		data[f.FieldMap.resolve(FieldKeyTime)] = entry.Time.Format(timestampFormat)
 	}
 	data[f.FieldMap.resolve(FieldKeyMsg)] = entry.Message
-	data[f.FieldMap.resolve(FieldKeyLevel)] = entry.Level.String()
+	data[f.FieldMap.resolve(FieldKeyLevel)] = fmt.Sprintf("%d", entry.Level)
 
 	serialized, err := json.Marshal(data)
 	if err != nil {
